@@ -173,7 +173,7 @@
               <rules>
                 <requireMavenVersion>
 				 <!-- Change this to Version 3.3 for Java 1.8 and Raspberry PI compilation, Java 11 is 3.6 -->
-                  <version>3.6</version>
+                  <version>3.3</version>
                 </requireMavenVersion>
               </rules>    
             </configuration>
