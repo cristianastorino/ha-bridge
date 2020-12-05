@@ -185,7 +185,7 @@
 				<version>3.8.1</version>
 				<configuration>
 					<!-- Comment this release line out for Java 1.8 and Raspberry PI compilation -->
-					<release>11</release>
+					<!-- <release>11</release> -->
 				 	<!-- Uncomment the next two lines for Java 1.8 and Raspberry PI compilation -->
 				 	<!-- <source>1.8</source> -->
 				 	<!-- <target>1.8</target> -->
