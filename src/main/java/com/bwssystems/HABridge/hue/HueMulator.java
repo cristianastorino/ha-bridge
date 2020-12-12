@@ -1221,12 +1221,44 @@ public class HueMulator {
 			isOnRequest = true;
 		}
 
+		if(device.isOnFirstDim()) {
+			if(isDimRequest && !device.getDeviceState().isOn()) {
+				isOnRequest = true;
+				theStateChanges.setOn(true);
+				// isDimRequest = false;
+				// isColorRequest = false;
+			} else if (isDimRequest && device.getDeviceState().isOn()) {
+				if (device.getDeviceState().getBri() == theStateChanges.getBri()) {
+					isOnRequest = true;
+					theStateChanges.setOn(true);
+					// isDimRequest = false;
+					// isColorRequest = false;
+				} else {
+					isOnRequest = false;
+					// isDimRequest = true;
+					// isColorRequest = false;
+				}
+			}
+		} else if (device.isOnWhenDimPresent()) {
+			if (isDimRequest) {
+				isOnRequest = true;
+				theStateChanges.setOn(true);
+			}
+		} else if (device.isDimNoOn()) {
+			if (isDimRequest && isOnRequest) {
+				isOnRequest = false;
+			}
+		}
+
+		if(isColorRequest && isDimRequest && !device.isDimOnColor()) {
+			isDimRequest = false;
+		}
+
+/* Old code supperceded by the above block
 		if (!device.isOnFirstDim() && device.isOnWhenDimPresent() && isDimRequest && !isOnRequest) {
 			isOnRequest = true;
 			theStateChanges.setOn(true);
-		} else if (!device.isOnFirstDim() && !device.isOnWhenDimPresent() && isDimRequest) {
-			// isOnRequest = false;
-		}
+		} else 
 
 		if (device.isOnFirstDim() && isDimRequest && !device.getDeviceState().isOn()) {
 			isOnRequest = true;
@@ -1245,6 +1277,7 @@ public class HueMulator {
 				isColorRequest = false;
 			}
 		}
+*/
 
 		if (isOnRequest) {
 			if (bridgeSettings.isTracestate())
