@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>com.github.bwssytems</groupId>
 			<artifactId>harmony-java-client</artifactId>
-			<version>master-SNAPSHOT</version>
+			<version>1.2.2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
